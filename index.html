@@ -6,6 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>주식 포트폴리오</title>
     <style>
+        .modal {
+            display:none;
+            position: fixed;
+            z-index: 1;
+            left:0;
+            top:0;
+            width:100%;
+            height:100%;
+            overflow:auto;
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+
+        .modalBody {
+            background-color: white;
+            margin: 15% auto;
+            padding:20px;
+            border:1px solid black;
+            width:80%;
+        }
+
         table {
             width: 100%;
             border: 1px solid black;
@@ -17,8 +37,36 @@
 </head>
 <body>
     <h1>주식 포트폴리오</h1>
-    <input type="button" value="추가" onclick="">
+    <button class="insertStock" type="button">추가
     </button>
+    <div class="modal">
+        <div class="modalBody">
+            <lable for="ticker">티커</lable>
+            <input type="text" id="ticker" name="ticker">
+            <lable for="name">종목명</lable>
+            <input type="text" id="name" name="name"><br>
+            <lable for="pricePurchase">매수가</lable>
+            <input type="text" id="pricePurchase" name="pricePurchase"><br>
+            <lable for="quantity">매수량</lable>
+            <input type="text" id="quantity" name="quantity"><br>
+
+            <button class="addStock">추가</button>
+            <button class="close">닫기</button>
+        </div>
+    </div>
+    <script>
+        var modal = document.querySelector('.modal');
+        var btn = document.querySelector('.insertStock');
+        var close = document.querySelector('.close');
+
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        close.onclick = function() {
+            modal.style.display = "none";
+        }
+    </script>
     <table>
         <tr>
             <th>티커</th>
